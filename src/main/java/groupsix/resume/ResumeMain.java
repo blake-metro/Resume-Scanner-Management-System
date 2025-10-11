@@ -17,7 +17,7 @@ public class ResumeMain extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setScene(new Scene(new ResumeController().getView()));
         primaryStage.setTitle("Resume Scanner");
-        primaryStage.setWidth(300);
+        //primaryStage.setWidth(300);
         primaryStage.show();
     }
 }

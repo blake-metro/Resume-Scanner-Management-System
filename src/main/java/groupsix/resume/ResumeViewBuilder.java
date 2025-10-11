@@ -3,7 +3,9 @@ package groupsix.resume;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Window;
@@ -28,16 +30,23 @@ public class ResumeViewBuilder implements Builder<Region> {
          */
         BorderPane results = new BorderPane();
         results.setCenter(setUpCenter());
+        results.setBottom(setUpBottom());
         return results;
     }
 
     private Region setUpCenter() {
         final Button chooserButton = new Button("Upload Resume");
+        final Button LoginButton = new Button("Login/Logout");
         chooserButton.setOnAction(evt -> {
             chooseFile.accept(chooserButton.getScene().getWindow());
         });
-        VBox results = new VBox(8, new Label("Hello World"), chooserButton);
+        HBox results = new HBox(300, chooserButton, LoginButton);
         results.setPadding(new Insets(6));
+        return results;
+    }
+
+    private Region setUpBottom() {
+        TableView results = new TableView<String>();
         return results;
     }
 
