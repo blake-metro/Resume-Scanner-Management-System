@@ -1,11 +1,12 @@
 package groupsix.resume;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ParseTable {
-    private Map<String, String> entries;
-    private Map<String, Double> keywords;
+    private final Map<String, String> entries;
+    private final Map<String, Double> keywords;
 
     public ParseTable() {
         entries = new HashMap<>();
@@ -24,11 +25,37 @@ public class ParseTable {
         return entries.replace(key, value);
     }
 
-    public static ParseTable getExampleTable(){
+    public Collection<String> getAllEntries() {
+        return entries.values();
+    }
+
+    public String addKeyword(String word, double weight) {
+        keywords.put(word, weight);
+        return word;
+    }
+
+    public String removeKeyword(String word) {
+        keywords.remove(word);
+        return word;
+    }
+
+    public String editKeyword(String word, double weight) {
+        keywords.replace(word, weight);
+        return word;
+    }
+
+    public Collection<String> getAllKeywords() {
+        return keywords.keySet();
+    }
+
+    /**
+     * Creates and returns a sample ParseTable for a resume, for use in testing
+     * @return sample parse table
+     */
+    public static ParseTable getExampleResumeTable(){
         ParseTable parseTable = new ParseTable();
-        parseTable.entries = new HashMap<>() {{
-            put("Name", "Ivana B. Codin");
-            put("Education", """
+        parseTable.addEntry("Name", "Ivana B. Codin");
+        parseTable.addEntry("Education", """
                     Metropolitan State University — St. Paul, MN
                     Bachelor of Science in Computer Science
                     Graduated: May 2025
@@ -37,7 +64,7 @@ public class ParseTable {
                     * Relevant Coursework: Data Structures & Algorithms, Software Engineering, Database Systems, Operating Systems, Web Application Development, Artificial Intelligence
                     
                     * Capstone Project: Campus Connect — a full-stack web app that helps students find study groups and campus events (React, Node.js, Express, MongoDB)""");
-            put("Experience", """
+        parseTable.addEntry("Experience", """
                     Software Development Intern — CodeForge Technologies, Minneapolis, MN
                     June 2024 – August 2024
                              * Assisted in developing internal tools for automating data entry using Python and SQL.
@@ -51,7 +78,6 @@ public class ParseTable {
                                 * Provided technical support to students and faculty on hardware, software, and network issues.
                     
                                 * Documented troubleshooting procedures and created a digital knowledge base for common issues.""");
-        }};
         return parseTable;
     }
 }
