@@ -8,7 +8,7 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.IllegalFormatException;
+
 
 
 /*
@@ -57,7 +57,10 @@ public class PDFConverter_PDF_To_TXT {
             System.err.println("IO error: " + e.getMessage());
         } catch (IllegalArgumentException e){
             e.printStackTrace();
-            System.err.println("Illegal argument: " + e.getMessage());
+            System.err.println("Illegal argument, files must be a .pdf: " + e.getMessage());
+        } catch (NullPointerException e){
+            e.printStackTrace();
+            System.err.println("Null pointer exception, folder should not be empty: " + e.getMessage());
         }
     }
 
