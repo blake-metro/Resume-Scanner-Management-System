@@ -5,45 +5,65 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
 
-import java.io.File; //For file separator, if using
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.IllegalFormatException;
 
 
 /*
-Class dedicated to taking in a PDF and outputting a plain text file
+Class dedicated to taking in a PDF and creating a String list to be used elsewhere
  */
 
 
+
 public class PDFConverter_PDF_To_TXT {
+    private ArrayList<String> pdfTextList;
+
 
     public PDFConverter_PDF_To_TXT(){
-        ArrayList<String> pdfText = new ArrayList<String>();
+        pdfTextList = new ArrayList<String>();
 
     }
+
 
     public void convertPDF(){ //will convert all files that are in the
+        try{
 
+            File folder = new File("src" + File.separator + "ResumeStorage_PDFs"); //File.separator makes it so it can work on any OS
+
+            PDDocument currentPDF = null; //Instantiate for multiple uses
+            PDFTextStripper pdfStripper = new PDFTextStripper(); //Used to parse the pdf and convert contents to text
+            String currentPDFText = null; //Instantiate for multiple uses
+
+            if(folder.isDirectory()) {
+                for (File pdfFile : folder.listFiles()) {
+                    if (pdfFile.isFile()) {
+                        if (pdfFile.getName().endsWith(".pdf")) {
+                            currentPDF = PDDocument.load(pdfFile);
+                            currentPDFText = pdfStripper.getText(currentPDF);
+                            pdfTextList.add(currentPDFText);
+                            currentPDF.close();
+                        } else {
+                            throw new IllegalArgumentException("One or more files in folder are not PDFs");
+                        }
+                    }
+
+                }
+            }
+
+        } catch (IOException e){
+            e.printStackTrace();
+            System.err.println("IO error: " + e.getMessage());
+        } catch (IllegalArgumentException e){
+            e.printStackTrace();
+            System.err.println("Illegal argument: " + e.getMessage());
+        }
     }
 
-
-    /*
-    Plan:
-    - UI will add uploaded PDFs to the src/ResumeStorage_PDFs folder, then will
-    use a for-each loop to grab and convert each pdf within that folder
-    - May not need to use "filePath" var then, if use for-each loop
-     */
-
-    //String filePath = null;
-    //filePath = "src" + File.separator + "ResumeStorage_PDFs" + File.separator + "FILE NAME, CHANGE THIS"; //Incomplete as of 10/31
-
-
-
-
-
-
-
-
+    public ArrayList<String> getPDFTextList() {
+        return pdfTextList;
+    }
 }
 
 
