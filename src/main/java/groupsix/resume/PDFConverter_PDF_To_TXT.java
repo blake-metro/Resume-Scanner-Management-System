@@ -27,10 +27,10 @@ public class PDFConverter_PDF_To_TXT {
     }
 
 
-    public void convertPDF(){ //will convert all files that are in the
+    public void convertPDF(){ //will convert all files that are in the src/ResumeStorage_PDFs directory
         try{
 
-            File folder = new File("src" + File.separator + "ResumeStorage_PDFs"); //File.separator makes it so it can work on any OS
+            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs"); //File.separator makes it so it can work on any OS, path is: src/main/ResumeStorage_PDFs
 
             PDDocument currentPDF = null; //Instantiate for multiple uses
             PDFTextStripper pdfStripper = new PDFTextStripper(); //Used to parse the pdf and convert contents to text
