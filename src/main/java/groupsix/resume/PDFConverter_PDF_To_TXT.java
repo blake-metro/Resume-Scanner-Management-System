@@ -8,6 +8,7 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 
@@ -18,11 +19,11 @@ Class dedicated to taking in a PDF and creating a String list to be used elsewhe
 
 
 public class PDFConverter_PDF_To_TXT {
-    private ArrayList<String> pdfTextList;
+    private final ArrayList<String> pdfTextList;
 
 
     public PDFConverter_PDF_To_TXT(){
-        pdfTextList = new ArrayList<String>();
+        pdfTextList = new ArrayList<>(); //Don't
 
     }
 
@@ -30,14 +31,19 @@ public class PDFConverter_PDF_To_TXT {
     public void convertPDF(){ //will convert all files that are in the src/ResumeStorage_PDFs directory
         try{
 
-            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs"); //File.separator makes it so it can work on any OS, path is: src/main/ResumeStorage_PDFs
+            //File.separator makes it so it can work on any OS, path is: src/main/ResumeStorage_PDFs
+//            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs"); //Main one for production
+//            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs_Passes"); //For passing file format tests
+            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs_Fails"); //For failing file format tests
+
 
             PDDocument currentPDF = null; //Instantiate for multiple uses
-            PDFTextStripper pdfStripper = new PDFTextStripper(); //Used to parse the pdf and convert contents to text
             String currentPDFText = null; //Instantiate for multiple uses
+            PDFTextStripper pdfStripper = new PDFTextStripper(); //Used to parse the pdf and convert contents to text
 
-            if(folder.isDirectory()) {
-                for (File pdfFile : folder.listFiles()) {
+
+            if(folder.isDirectory() && folder.listFiles()!= null) { //folder.listFiles() can be null if doesn't exist or isn't a directory
+                for (File pdfFile : Objects.requireNonNull(folder.listFiles())) {
                     if (pdfFile.isFile()) {
                         if (pdfFile.getName().endsWith(".pdf")) {
                             currentPDF = PDDocument.load(pdfFile);
@@ -45,7 +51,7 @@ public class PDFConverter_PDF_To_TXT {
                             pdfTextList.add(currentPDFText);
                             currentPDF.close();
                         } else {
-                            throw new IllegalArgumentException("One or more files in folder are not PDFs");
+                            throw new ResumeProcessingException("Unsupported file format: " + pdfFile.getName());
                         }
                     }
 
@@ -55,12 +61,9 @@ public class PDFConverter_PDF_To_TXT {
         } catch (IOException e){
             e.printStackTrace();
             System.err.println("IO error: " + e.getMessage());
-        } catch (IllegalArgumentException e){
+        } catch (ResumeProcessingException e){
             e.printStackTrace();
-            System.err.println("Illegal argument, files must be a .pdf: " + e.getMessage());
-        } catch (NullPointerException e){
-            e.printStackTrace();
-            System.err.println("Null pointer exception, folder should not be empty: " + e.getMessage());
+            System.err.println("Unsupported file format: " + e.getMessage());
         }
     }
 
