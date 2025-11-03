@@ -31,7 +31,7 @@ public class ResumeInteractor {
             desktop.open(file);
         } catch (IOException ex) {
             Logger.getLogger(
-                    ResumeViewBuilder.class.getName()).log(
+                    AppViewBuilder.class.getName()).log(
                     Level.SEVERE, null, ex
             );
         }

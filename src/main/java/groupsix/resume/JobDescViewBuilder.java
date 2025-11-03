@@ -4,12 +4,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import javafx.util.Builder;
 
-public class ResumeViewBuilder implements Builder<Region> {
+public class JobDescViewBuilder implements Builder<Region> {
 
     @Override
     public Region build() {
         // TODO:
-        Label results = new Label("Resume View");
+        Label results = new Label("Job Description View");
         return results;
     }
 }
