@@ -1,12 +1,18 @@
 package groupsix.resume;
 
 import java.io.File;
+import java.util.Collection;
 
 public abstract class Document {
     protected File pdf;
     protected String text;
-    protected ParseTable parseTable;
+    protected final ParseTable parseTable;
 
+    public Document() {
+        pdf = null;
+        text = null;
+        parseTable = new ParseTable();
+    }
 
     public File getPdf() {
         return pdf;
@@ -36,5 +42,30 @@ public abstract class Document {
         return parseTable.removeEntry(key);
     }
 
+    public String editEntry(String key, String value) {
+        return parseTable.editEntry(key, value);
+    }
 
+    public Collection<String> getAllEntries() {
+        return parseTable.getAllEntries();
+    }
+
+    public String addKeyword(String word, double weight) {
+        return parseTable.addKeyword(word, weight);
+    }
+
+    public String removeKeyword(String word) {
+        return parseTable.removeKeyword(word);
+    }
+
+    public String editKeyword(String word, double weight) {
+        return parseTable.editKeyword(word, weight);
+    }
+
+    public Collection<String> getAllKeywords() {
+        return parseTable.getAllKeywords();
+    }
+
+    protected abstract void readTextFromPDF();
+    protected abstract void fillInParseTable();
 }

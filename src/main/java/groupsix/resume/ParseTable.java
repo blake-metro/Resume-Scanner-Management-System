@@ -30,18 +30,15 @@ public class ParseTable {
     }
 
     public String addKeyword(String word, double weight) {
-        keywords.put(word, weight);
-        return word;
+        return keywords.put(word, weight) == null ? null : word;
     }
 
     public String removeKeyword(String word) {
-        keywords.remove(word);
-        return word;
+        return keywords.remove(word) == null ? null : word;
     }
 
     public String editKeyword(String word, double weight) {
-        keywords.replace(word, weight);
-        return word;
+        return keywords.replace(word, weight) == null ? null : word;
     }
 
     public Collection<String> getAllKeywords() {
