@@ -24,18 +24,19 @@ public class PDFConverter_PDF_To_TXT {
 
     public PDFConverter_PDF_To_TXT(){
         pdfTextList = new ArrayList<>(); //Don't
-
+        System.out.println("PDFConverter_PDF_To_TXT");
     }
 
 
     public void convertPDF(){ //will convert all files that are in the src/ResumeStorage_PDFs directory
         try{
-
+            System.out.println("Inside convertPDF");
             //File.separator makes it so it can work on any OS, path is: src/main/ResumeStorage_PDFs
 //            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs"); //Main one for production
-//            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs_Passes"); //For passing file format tests
-            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs_Fails"); //For failing file format tests
+            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs_Passes"); //For passing file format tests
+//            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs_Fails"); //For failing file format tests
 
+            System.out.println("Found folder: " + folder.getName());
 
             PDDocument currentPDF = null; //Instantiate for multiple uses
             String currentPDFText = null; //Instantiate for multiple uses
@@ -45,6 +46,7 @@ public class PDFConverter_PDF_To_TXT {
             if(folder.isDirectory() && folder.listFiles()!= null) { //folder.listFiles() can be null if doesn't exist or isn't a directory
                 for (File pdfFile : Objects.requireNonNull(folder.listFiles())) {
                     if (pdfFile.isFile()) {
+                        System.out.println("Accessing file: " + pdfFile.getName());
                         if (pdfFile.getName().endsWith(".pdf")) {
                             currentPDF = PDDocument.load(pdfFile);
                             currentPDFText = pdfStripper.getText(currentPDF);
