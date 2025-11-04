@@ -1,0 +1,1 @@
+This file is the incorrect format and should cause the PDFConverter to throw an illegal argument
