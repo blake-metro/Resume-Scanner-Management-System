@@ -32,8 +32,8 @@ public class PDFConverter_PDF_To_TXT {
         try{
 //            System.out.println("Inside convertPDF"); //Testing
             //File.separator makes it so it can work on any OS, path is: src/main/ResumeStorage_PDFs
-//            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs"); //Main one for production
-            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs_Passes"); //For passing file format tests
+            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs"); //Main one for production
+//            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs_Passes"); //For passing file format tests
 //            File folder = new File("src" + File.separator + "main" + File.separator + "ResumeStorage_PDFs_Fails"); //For failing file format tests
 
 //            System.out.println("Found folder: " + folder.getName()); //Testing
