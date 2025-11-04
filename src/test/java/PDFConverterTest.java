@@ -5,8 +5,7 @@ Class using JUnit to test PDF converter
 
  */
 
-import groupsix.resume.PDFConverter_PDF_To_TXT;
-import groupsix.resume.ResumeProcessingException;
+import groupsix.resume.PDFConverter.PDFConverter_PDF_To_TXT;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

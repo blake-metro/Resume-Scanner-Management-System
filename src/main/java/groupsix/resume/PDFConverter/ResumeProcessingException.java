@@ -1,4 +1,4 @@
-package groupsix.resume;
+package groupsix.resume.PDFConverter;
 
 public class ResumeProcessingException extends Exception{
     public ResumeProcessingException(String message){
