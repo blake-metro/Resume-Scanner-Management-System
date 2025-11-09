@@ -1,9 +1,7 @@
-package groupsix.resume;
+package groupsix.resume.UI;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -36,14 +34,13 @@ public class AppViewBuilder implements Builder<Region> {
     public Region build() {
         /*
         TODO: Need to add another button for uploading a job description/keywords.
-        TODO: Need to add a label to display a score.
-        TODO: Need to add a way to view the score breakdown (new view???)
+        TODO: Need bind label to display a score.
+        TODO: Need to implement jobDescr tableView
+        TODO: Need to implement score breakdown
          */
-        ObservableList<ParseModel> resumeTableItems = FXCollections.observableArrayList();
-        resumeTableItems.setAll(ParseModel.generateList());
 
         results = new BorderPane();
-        resumeView = new ResumeViewBuilder(resumeTableItems).build();
+        resumeView = new ResumeViewBuilder(viewModel).build();
         jobDescView = new JobDescViewBuilder().build();
         scoreView = new ScoreViewBuilder().build();
         resumeView.visibleProperty().bind(resumeViewVisible);
@@ -52,7 +49,6 @@ public class AppViewBuilder implements Builder<Region> {
 
         results.setCenter(new StackPane(scoreView, jobDescView, resumeView));
         results.setLeft(setUpLeft());
-        //results.setMinWidth(0);
         return results;
     }
 

@@ -1,4 +1,4 @@
-package groupsix.resume;
+package groupsix.resume.UI;
 
 import java.io.File;
 

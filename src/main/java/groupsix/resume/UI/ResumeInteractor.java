@@ -1,4 +1,4 @@
-package groupsix.resume;
+package groupsix.resume.UI;
 
 import javafx.stage.FileChooser;
 import javafx.stage.Window;

@@ -1,5 +1,6 @@
-package groupsix.resume;
+package groupsix.resume.UI;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -8,9 +9,12 @@ import javafx.util.Builder;
 
 public class ResumeViewBuilder implements Builder<Region> {
 
-    private final ObservableList<ParseModel> model;
+    private final ResumeModel model;
+    private final ObservableList<ParseModel> resumeTableItems;
 
-    public ResumeViewBuilder(ObservableList<ParseModel> model) {
+    public ResumeViewBuilder(ResumeModel model) {
+        resumeTableItems = FXCollections.observableArrayList();
+        resumeTableItems.setAll(ParseModel.generateList());
         this.model = model;
     }
     @Override
@@ -26,7 +30,7 @@ public class ResumeViewBuilder implements Builder<Region> {
         dataCol.setCellValueFactory(data -> data.getValue().dataProperty());
         results.getColumns().add(dataCol);
 
-        results.setItems(model);
+        results.setItems(resumeTableItems);
 
         return results;
     }

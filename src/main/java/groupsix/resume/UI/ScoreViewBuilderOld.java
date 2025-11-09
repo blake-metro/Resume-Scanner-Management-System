@@ -1,4 +1,4 @@
-package groupsix.resume;
+package groupsix.resume.UI;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;

@@ -10,4 +10,6 @@ module groupsix.resume {
     exports groupsix.resume;
     exports groupsix.resume.PDFConverter;
     opens groupsix.resume.PDFConverter to javafx.fxml;
+    exports groupsix.resume.UI;
+    opens groupsix.resume.UI to javafx.fxml;
 }

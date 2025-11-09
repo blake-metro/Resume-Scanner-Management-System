@@ -1,4 +1,4 @@
-package groupsix.resume;
+package groupsix.resume.UI;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
