@@ -2,6 +2,8 @@ package groupsix.resume;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -18,6 +20,7 @@ public class AppViewBuilder implements Builder<Region> {
     private final ResumeModel viewModel;
     private final Consumer<Window> chooseFile;
 
+    BorderPane results;
     Region scoreView;
     Region resumeView;
     Region jobDescView;
@@ -36,8 +39,11 @@ public class AppViewBuilder implements Builder<Region> {
         TODO: Need to add a label to display a score.
         TODO: Need to add a way to view the score breakdown (new view???)
          */
-        BorderPane results = new BorderPane();
-        resumeView = new ResumeViewBuilder().build();
+        ObservableList<ParseModel> resumeTableItems = FXCollections.observableArrayList();
+        resumeTableItems.setAll(ParseModel.generateList());
+
+        results = new BorderPane();
+        resumeView = new ResumeViewBuilder(resumeTableItems).build();
         jobDescView = new JobDescViewBuilder().build();
         scoreView = new ScoreViewBuilder().build();
         resumeView.visibleProperty().bind(resumeViewVisible);
@@ -46,6 +52,7 @@ public class AppViewBuilder implements Builder<Region> {
 
         results.setCenter(new StackPane(scoreView, jobDescView, resumeView));
         results.setLeft(setUpLeft());
+        //results.setMinWidth(0);
         return results;
     }
 
@@ -56,7 +63,7 @@ public class AppViewBuilder implements Builder<Region> {
         Button resumeButton = new Button("Resume");
         scoreButton.setOnAction(evt -> setVisibility(true, false, false));
         jobDescrButton.setOnAction(evt -> setVisibility(false, false, true));
-        resumeButton.setOnAction(evt -> setVisibility(false, true, false));
+        resumeButton.setOnAction(evt -> setVisibility(1000, false, true, false));
         scoreButton.disableProperty().bind(scoreViewVisible);
         jobDescrButton.disableProperty().bind(jobDescViewVisible);
         resumeButton.disableProperty().bind(resumeViewVisible);
@@ -85,9 +92,15 @@ public class AppViewBuilder implements Builder<Region> {
     }
 
     private void setVisibility(Boolean score, Boolean resume, Boolean jobDesc) {
+        setVisibility(0, score, resume, jobDesc);
+    }
+
+    private void setVisibility(int width, Boolean score, Boolean resume, Boolean jobDesc) {
         scoreViewVisible.set(score);
         resumeViewVisible.set(resume);
         jobDescViewVisible.set(jobDesc);
+        results.setMinWidth(width);
+        results.getScene().getWindow().sizeToScene();
     }
 
 }
