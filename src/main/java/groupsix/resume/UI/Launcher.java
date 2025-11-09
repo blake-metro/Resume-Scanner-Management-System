@@ -1,6 +1,5 @@
 package groupsix.resume.UI;
 
-import groupsix.resume.ResumeMain;
 import javafx.application.Application;
 
 /**

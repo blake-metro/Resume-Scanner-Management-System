@@ -1,4 +1,4 @@
-package groupsix.resume;
+package groupsix.resume.UI;
 
 import groupsix.resume.UI.ResumeController;
 import javafx.application.Application;
