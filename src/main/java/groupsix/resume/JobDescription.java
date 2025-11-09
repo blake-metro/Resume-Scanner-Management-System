@@ -25,4 +25,8 @@ public class JobDescription extends Document {
     protected void fillInParseTable() {
         //todo: add code
     }
+
+    public static ParseTable getExampleParseTable() {
+        return ParseTable.getExampleJobDescriptionTable();
+    }
 }

@@ -77,4 +77,37 @@ public class ParseTable {
                                 * Documented troubleshooting procedures and created a digital knowledge base for common issues.""");
         return parseTable;
     }
+
+    public static ParseTable getExampleJobDescriptionTable() {
+        ParseTable parseTable = new ParseTable();
+        parseTable.addEntry("Job Title", "Entry-Level Software Engineer");
+        parseTable.addEntry("Company", "NorthStar Tech Solutions");
+        parseTable.addEntry("Location", "St. Paul, MN");
+        parseTable.addEntry("Responsibilities", """
+                * Develop and maintain web applications using JavaScript, React, and Node.js
+                
+                * Collaborate with senior engineers on API design and integration
+                
+                * Participate in code reviews, testing, and debugging
+                
+                * Write clear, maintainable, and efficient code
+                
+                * Work with SQL and NoSQL databases to store and retrieve application data
+                
+                * Contribute to Agile development sprints and daily stand-ups""");
+        parseTable.addEntry("Qualifications", """
+                * Bachelor’s degree in Computer Science, Software Engineering, or related field (or equivalent experience)
+                
+                * Solid understanding of object-oriented programming and data structures
+                
+                * Familiarity with at least one modern web framework (React, Angular, or Vue)
+                
+                * Basic knowledge of REST APIs and version control systems (Git)
+                
+                * Strong problem-solving and communication skills
+                
+                * Eagerness to learn and grow in a collaborative team environment""");
+
+        return  parseTable;
+    }
 }

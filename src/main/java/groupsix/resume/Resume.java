@@ -24,4 +24,8 @@ public class Resume extends Document{
     protected void fillInParseTable() {
         //todo: add code
     }
+
+    public static ParseTable getExampleParseTable() {
+        return ParseTable.getExampleResumeTable();
+    }
 }
