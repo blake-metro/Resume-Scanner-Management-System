@@ -11,12 +11,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Window;
 import javafx.util.Builder;
 
+import java.io.File;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class AppViewBuilder implements Builder<Region> {
 
-    private final ResumeModel viewModel;
-    private final Consumer<Window> chooseFile;
+    private final RSMSModel viewModel;
+    private final BiConsumer<Window, String> chooseFile;
 
     BorderPane results;
     Region scoreView;
@@ -25,7 +27,7 @@ public class AppViewBuilder implements Builder<Region> {
     BooleanProperty scoreViewVisible = new SimpleBooleanProperty(true);
     BooleanProperty resumeViewVisible = new SimpleBooleanProperty(false);
     BooleanProperty jobDescViewVisible = new SimpleBooleanProperty(false);
-    public AppViewBuilder(ResumeModel viewModel, Consumer<Window> chooseFile) {
+    public AppViewBuilder(RSMSModel viewModel, BiConsumer<Window, String> chooseFile) {
         this.viewModel = viewModel;
         this.chooseFile = chooseFile;
     }
@@ -41,7 +43,7 @@ public class AppViewBuilder implements Builder<Region> {
 
         results = new BorderPane();
         resumeView = new ResumeViewBuilder(viewModel).build();
-        jobDescView = new JobDescViewBuilder().build();
+        jobDescView = new JobDescViewBuilder(viewModel).build();
         scoreView = new ScoreViewBuilder().build();
         resumeView.visibleProperty().bind(resumeViewVisible);
         jobDescView.visibleProperty().bind(jobDescViewVisible);
@@ -58,7 +60,7 @@ public class AppViewBuilder implements Builder<Region> {
         Button jobDescrButton = new Button("Job Description");
         Button resumeButton = new Button("Resume");
         scoreButton.setOnAction(evt -> setVisibility(true, false, false));
-        jobDescrButton.setOnAction(evt -> setVisibility(false, false, true));
+        jobDescrButton.setOnAction(evt -> setVisibility(1000, false, false, true));
         resumeButton.setOnAction(evt -> setVisibility(1000, false, true, false));
         scoreButton.disableProperty().bind(scoreViewVisible);
         jobDescrButton.disableProperty().bind(jobDescViewVisible);
@@ -71,14 +73,19 @@ public class AppViewBuilder implements Builder<Region> {
         // Resume View
         Button uploadResumeFile = new Button("Upload Resume");
         uploadResumeFile.setOnAction(evt -> {
-            chooseFile.accept(uploadResumeFile.getScene().getWindow());
+            chooseFile.accept(uploadResumeFile.getScene().getWindow(), "resume");
+        });
+        // Job Descr View
+        Button uploadJobDescrFile = new Button("Upload Job Descr");
+        uploadJobDescrFile.setOnAction(evt -> {
+            chooseFile.accept(uploadResumeFile.getScene().getWindow(), "job");
         });
 
         // Controls VBox
         VBox viewButtons = new VBox(10, scoreButton, jobDescrButton, resumeButton);
         VBox scoreButtons = new VBox(calculateScoreButton);
         VBox resumeButtons = new VBox(uploadResumeFile);
-        VBox jobDescrButtons = new VBox();
+        VBox jobDescrButtons = new VBox(uploadJobDescrFile);
         scoreButtons.visibleProperty().bind(scoreViewVisible);
         resumeButtons.visibleProperty().bind(resumeViewVisible);
         jobDescrButtons.visibleProperty().bind(jobDescViewVisible);

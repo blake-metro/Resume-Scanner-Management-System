@@ -9,20 +9,24 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ResumeInteractor {
-    private final ResumeModel viewModel;
+public class RSMSInteractor {
+    private final RSMSModel viewModel;
     final FileChooser fileChooser = new FileChooser();
     private Desktop desktop = Desktop.getDesktop();
 
-    public ResumeInteractor(ResumeModel viewModel) {
+    public RSMSInteractor(RSMSModel viewModel) {
         this.viewModel = viewModel;
     }
 
-    public void chooseFile(Window window) {
+    public void chooseFile(Window window, String target) {
         File file = fileChooser.showOpenDialog(window);
         if (file != null) {
-            viewModel.setResume(file);
-            //openFile(file);
+            if(target.equalsIgnoreCase("resume")) {
+                viewModel.setResume(file);
+            } else {
+                viewModel.setJobDescr(file);
+            }
+            openFile(file);
         }
     }
 

@@ -35,7 +35,7 @@ tasks.withType(JavaCompile) {
 
 application {
   mainModule = 'groupsix.resume'
-  mainClass = 'groupsix.resume.UI.ResumeMain'
+  mainClass = 'groupsix.resume.UI.RSMSMain'
 }
 
 javafx {

@@ -13,9 +13,9 @@ import java.util.function.Consumer;
 
 public class ScoreViewBuilderOld implements Builder<Region> {
 
-    private final ResumeModel viewModel;
+    private final RSMSModel viewModel;
     private final Consumer<Window> chooseFile;
-    public ScoreViewBuilderOld(ResumeModel viewModel, Consumer<Window> chooseFile) {
+    public ScoreViewBuilderOld(RSMSModel viewModel, Consumer<Window> chooseFile) {
         this.viewModel = viewModel;
         this.chooseFile = chooseFile;
     }

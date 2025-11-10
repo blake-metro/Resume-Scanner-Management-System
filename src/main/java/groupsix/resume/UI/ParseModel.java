@@ -34,7 +34,7 @@ public class ParseModel {
         return data;
     }
 
-    public static List<ParseModel> generateList() {
+    public static List<ParseModel> generateResList() {
         List<ParseModel> results = new ArrayList<>();
         results.add(new ParseModel("Name", "Ivana B. Codin"));
         results.add(new ParseModel("Education", """
@@ -60,6 +60,38 @@ public class ParseModel {
                                 * Provided technical support to students and faculty on hardware, software, and network issues.
                     
                                 * Documented troubleshooting procedures and created a digital knowledge base for common issues."""));
+        return results;
+    }
+
+    public static List<ParseModel> generateJobDescrList() {
+        List<ParseModel> results = new ArrayList<>();
+        results.add(new ParseModel("Job Title", "Entry-Level Software Engineer"));
+        results.add(new ParseModel("Company", "NorthStar Tech Solutions"));
+        results.add(new ParseModel("Location", "St. Paul, MN"));
+        results.add(new ParseModel("Responsibilities", """
+                * Develop and maintain web applications using JavaScript, React, and Node.js
+                
+                * Collaborate with senior engineers on API design and integration
+                
+                * Participate in code reviews, testing, and debugging
+                
+                * Write clear, maintainable, and efficient code
+                
+                * Work with SQL and NoSQL databases to store and retrieve application data
+                
+                * Contribute to Agile development sprints and daily stand-ups"""));
+        results.add(new ParseModel("Qualifications", """
+                * Bachelor’s degree in Computer Science, Software Engineering, or related field (or equivalent experience)
+                
+                * Solid understanding of object-oriented programming and data structures
+                
+                * Familiarity with at least one modern web framework (React, Angular, or Vue)
+                
+                * Basic knowledge of REST APIs and version control systems (Git)
+                
+                * Strong problem-solving and communication skills
+                
+                * Eagerness to learn and grow in a collaborative team environment"""));
         return results;
     }
 

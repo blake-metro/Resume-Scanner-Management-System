@@ -9,12 +9,12 @@ import javafx.util.Builder;
 
 public class ResumeViewBuilder implements Builder<Region> {
 
-    private final ResumeModel model;
+    private final RSMSModel model;
     private final ObservableList<ParseModel> resumeTableItems;
 
-    public ResumeViewBuilder(ResumeModel model) {
+    public ResumeViewBuilder(RSMSModel model) {
         resumeTableItems = FXCollections.observableArrayList();
-        resumeTableItems.setAll(ParseModel.generateList());
+        resumeTableItems.setAll(ParseModel.generateResList());
         this.model = model;
     }
     @Override
@@ -22,7 +22,7 @@ public class ResumeViewBuilder implements Builder<Region> {
         // TODO:
         TableView<ParseModel> results = new TableView<>();
 
-        TableColumn<ParseModel, String> titleCol = new TableColumn<>("Title");
+        TableColumn<ParseModel, String> titleCol = new TableColumn<>("Tag");
         titleCol.setCellValueFactory(title -> title.getValue().titleProperty());
         results.getColumns().add(titleCol);
 
