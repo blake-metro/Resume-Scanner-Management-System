@@ -37,7 +37,7 @@ public class AppViewBuilder implements Builder<Region> {
         /*
         TODO: Need to add another button for uploading a job description/keywords.
         TODO: Need bind label to display a score.
-        TODO: Need to implement jobDescr tableView
+        TODO: Need to implement jobDesc tableView
         TODO: Need to implement score breakdown
          */
 
@@ -72,24 +72,20 @@ public class AppViewBuilder implements Builder<Region> {
         Button calculateScoreButton = new Button("Calculate Score");    // TODO: make this button do something
         // Resume View
         Button uploadResumeFile = new Button("Upload Resume");
-        uploadResumeFile.setOnAction(evt -> {
-            chooseFile.accept(uploadResumeFile.getScene().getWindow(), "resume");
-        });
-        // Job Descr View
-        Button uploadJobDescrFile = new Button("Upload Job Descr");
-        uploadJobDescrFile.setOnAction(evt -> {
-            chooseFile.accept(uploadResumeFile.getScene().getWindow(), "job");
-        });
+        uploadResumeFile.setOnAction(evt -> chooseFile.accept(uploadResumeFile.getScene().getWindow(), "resume"));
+        // Job Desc View
+        Button uploadJobDescFile = new Button("Upload Job Desc");
+        uploadJobDescFile.setOnAction(evt -> chooseFile.accept(uploadResumeFile.getScene().getWindow(), "job"));
 
         // Controls VBox
         VBox viewButtons = new VBox(10, scoreButton, jobDescrButton, resumeButton);
         VBox scoreButtons = new VBox(calculateScoreButton);
         VBox resumeButtons = new VBox(uploadResumeFile);
-        VBox jobDescrButtons = new VBox(uploadJobDescrFile);
+        VBox jobDescButtons = new VBox(uploadJobDescFile);
         scoreButtons.visibleProperty().bind(scoreViewVisible);
         resumeButtons.visibleProperty().bind(resumeViewVisible);
-        jobDescrButtons.visibleProperty().bind(jobDescViewVisible);
-        VBox results = new VBox(300, viewButtons, new StackPane(scoreButtons, resumeButtons, jobDescrButtons));
+        jobDescButtons.visibleProperty().bind(jobDescViewVisible);
+        VBox results = new VBox(300, viewButtons, new StackPane(scoreButtons, resumeButtons, jobDescButtons));
         results.setPadding(new Insets(6));
         return results;
     }
