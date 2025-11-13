@@ -1,4 +1,4 @@
-package groupsix.resume;
+package groupsix.resume.model;
 
 import java.io.File;
 
