@@ -4,6 +4,13 @@ import java.io.File;
 import java.util.Collection;
 import java.util.Map;
 
+/**
+ * Superclass for <code>Resume</code> and <code>JobDescription</code> classes.
+ * Most of the shared boilerplate code is located here.  <code>Docuemnt</code>s consist of
+ * an original PDF file, the text extracted from that file, and a parse table listing all
+ * sections of the document (such as "Name" and "Work Experience" for resumes, "Company" and
+ * "Qualifications" for job descriptions) and the text included in each section.
+ */
 public abstract class Document {
     protected File pdf;
     protected String text;
@@ -23,28 +30,41 @@ public abstract class Document {
         this.pdf = pdf;
     }
 
-    public String getText() {
+    /**
+     * Get full extracted text of document as read from the PDF file or set using
+     * <code>setFullText()</code>
+     * @return document text
+     */
+    public String getFullText() {
         return text;
     }
 
-    public void setText(String text) {
+    /**
+     * Directly sets the full text of document and updates the parse table. Only use this if there
+     * is no PDF file available, as this will override it. If there is a PDF, use <code>setPDF()</code>
+     * instead.
+     * @param text new full text of document
+     */
+    public void setFullText(String text) {
         this.text = text;
     }
 
-    public ParseTable getParseTable() {
-        return parseTable;
+    /**
+     * Manually add
+     * @param heading
+     * @param text
+     * @return
+     */
+    public String addSection(String heading, String text) {
+        return parseTable.addSection(heading, text);
     }
 
-    public String addEntry(String key, String value) {
-        return parseTable.addEntry(key, value);
+    public String removeSection(String heading) {
+        return parseTable.removeSection(heading);
     }
 
-    public String removeEntry(String key) {
-        return parseTable.removeEntry(key);
-    }
-
-    public String editEntry(String key, String value) {
-        return parseTable.editEntry(key, value);
+    public String editSection(String heading, String text) {
+        return parseTable.editSection(heading, text);
     }
 
     /**
@@ -54,7 +74,7 @@ public abstract class Document {
      * @return collection of all entries in parse table
      */
     public Collection<Map.Entry<String, String>> getAllEntries() {
-        return parseTable.getAllEntries();
+        return parseTable.getAllSections();
     }
 
     /**
@@ -63,7 +83,7 @@ public abstract class Document {
      * @return map of section headings and text
      */
     public Map<String, String> getAllEntriesAsMap() {
-        return parseTable.getAllEntriesAsMap();
+        return parseTable.getAllSectionsAsMap();
     }
 
     public String addKeyword(String word, double weight) {
