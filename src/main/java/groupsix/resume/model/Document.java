@@ -2,6 +2,7 @@ package groupsix.resume.model;
 
 import java.io.File;
 import java.util.Collection;
+import java.util.Map;
 
 public abstract class Document {
     protected File pdf;
@@ -46,8 +47,23 @@ public abstract class Document {
         return parseTable.editEntry(key, value);
     }
 
-    public Collection<String> getAllEntries() {
+    /**
+     * Returns a collection of pairs of section headings and section text from the parse table.
+     * This collection can be turned into an ArrayList, or ObservableList for displaying via JavaFX
+     * TableView.
+     * @return collection of all entries in parse table
+     */
+    public Collection<Map.Entry<String, String>> getAllEntries() {
         return parseTable.getAllEntries();
+    }
+
+    /**
+     * Returns all section headings and section text paired together in a Map using the headings
+     * as keys and the text as values.
+     * @return map of section headings and text
+     */
+    public Map<String, String> getAllEntriesAsMap() {
+        return parseTable.getAllEntriesAsMap();
     }
 
     public String addKeyword(String word, double weight) {

@@ -25,8 +25,12 @@ public class ParseTable {
         return entries.replace(key, value);
     }
 
-    public Collection<String> getAllEntries() {
-        return entries.values();
+    public Collection<Map.Entry<String, String>> getAllEntries() {
+        return entries.entrySet();
+    }
+
+    public Map<String, String> getAllEntriesAsMap() {
+        return new HashMap<>(entries);
     }
 
     public String addKeyword(String word, double weight) {
