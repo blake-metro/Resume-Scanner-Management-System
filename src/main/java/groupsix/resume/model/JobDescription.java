@@ -1,4 +1,4 @@
-package groupsix.resume;
+package groupsix.resume.model;
 
 import java.io.File;
 
@@ -14,6 +14,10 @@ public class JobDescription extends Document {
     public JobDescription(String text) {
         setText(text);
         fillInParseTable();
+    }
+
+    private void setText(String text) {
+        this.text = text;
     }
 
     @Override

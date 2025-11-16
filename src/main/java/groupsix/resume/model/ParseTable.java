@@ -1,4 +1,4 @@
-package groupsix.resume;
+package groupsix.resume.model;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -13,20 +13,24 @@ public class ParseTable {
         keywords = new HashMap<>();
     }
 
-    public String addEntry(String key, String value) {
-        return entries.put(key, value);
+    public String addSection(String heading, String text) {
+        return entries.put(heading, text);
     }
 
-    public String removeEntry(String key) {
-        return entries.remove(key);
+    public String removeSection(String heading) {
+        return entries.remove(heading);
     }
 
-    public String editEntry(String key, String value) {
-        return entries.replace(key, value);
+    public String editSection(String heading, String text) {
+        return entries.replace(heading, text);
     }
 
-    public Collection<String> getAllEntries() {
-        return entries.values();
+    public Collection<Map.Entry<String, String>> getAllSections() {
+        return entries.entrySet();
+    }
+
+    public Map<String, String> getAllSectionsAsMap() {
+        return new HashMap<>(entries);
     }
 
     public String addKeyword(String word, double weight) {
@@ -51,8 +55,8 @@ public class ParseTable {
      */
     public static ParseTable getExampleResumeTable(){
         ParseTable parseTable = new ParseTable();
-        parseTable.addEntry("Name", "Ivana B. Codin");
-        parseTable.addEntry("Education", """
+        parseTable.addSection("Name", "Ivana B. Codin");
+        parseTable.addSection("Education", """
                     Metropolitan State University — St. Paul, MN
                     Bachelor of Science in Computer Science
                     Graduated: May 2025
@@ -61,7 +65,7 @@ public class ParseTable {
                     * Relevant Coursework: Data Structures & Algorithms, Software Engineering, Database Systems, Operating Systems, Web Application Development, Artificial Intelligence
                     
                     * Capstone Project: Campus Connect — a full-stack web app that helps students find study groups and campus events (React, Node.js, Express, MongoDB)""");
-        parseTable.addEntry("Experience", """
+        parseTable.addSection("Experience", """
                     Software Development Intern — CodeForge Technologies, Minneapolis, MN
                     June 2024 – August 2024
                              * Assisted in developing internal tools for automating data entry using Python and SQL.
@@ -80,10 +84,10 @@ public class ParseTable {
 
     public static ParseTable getExampleJobDescriptionTable() {
         ParseTable parseTable = new ParseTable();
-        parseTable.addEntry("Job Title", "Entry-Level Software Engineer");
-        parseTable.addEntry("Company", "NorthStar Tech Solutions");
-        parseTable.addEntry("Location", "St. Paul, MN");
-        parseTable.addEntry("Responsibilities", """
+        parseTable.addSection("Job Title", "Entry-Level Software Engineer");
+        parseTable.addSection("Company", "NorthStar Tech Solutions");
+        parseTable.addSection("Location", "St. Paul, MN");
+        parseTable.addSection("Responsibilities", """
                 * Develop and maintain web applications using JavaScript, React, and Node.js
                 
                 * Collaborate with senior engineers on API design and integration
@@ -95,7 +99,7 @@ public class ParseTable {
                 * Work with SQL and NoSQL databases to store and retrieve application data
                 
                 * Contribute to Agile development sprints and daily stand-ups""");
-        parseTable.addEntry("Qualifications", """
+        parseTable.addSection("Qualifications", """
                 * Bachelor’s degree in Computer Science, Software Engineering, or related field (or equivalent experience)
                 
                 * Solid understanding of object-oriented programming and data structures
