@@ -1,4 +1,4 @@
-package groupsix.resume.model;
+package groupsix.resume;
 
 /**
  * Holds a Resume and Job Description, calculates the resume score based on similarity
