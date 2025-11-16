@@ -16,6 +16,10 @@ public class JobDescription extends Document {
         fillInParseTable();
     }
 
+    private void setText(String text) {
+        this.text = text;
+    }
+
     @Override
     protected void readTextFromPDF() {
         //todo: add code
