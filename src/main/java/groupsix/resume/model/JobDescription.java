@@ -1,5 +1,7 @@
 package groupsix.resume.model;
 
+import groupsix.resume.parsing.Parser;
+
 import java.io.File;
 
 public class JobDescription extends Document {
@@ -12,22 +14,13 @@ public class JobDescription extends Document {
     }
 
     public JobDescription(String text) {
-        setText(text);
-        fillInParseTable();
-    }
-
-    private void setText(String text) {
         this.text = text;
-    }
-
-    @Override
-    protected void readTextFromPDF() {
-        //todo: add code
+        fillInParseTable();
     }
 
     @Override
     protected void fillInParseTable() {
-        //todo: add code
+        parseTable = Parser.parseJobDescription(text);
     }
 
     public static ParseTable getExampleParseTable() {

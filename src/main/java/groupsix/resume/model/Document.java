@@ -1,5 +1,7 @@
 package groupsix.resume.model;
 
+import groupsix.resume.PDFConverter.PDFConverter_PDF_To_STRING;
+
 import java.io.File;
 import java.util.Collection;
 import java.util.Map;
@@ -14,7 +16,7 @@ import java.util.Map;
 public abstract class Document {
     protected File pdf;
     protected String text;
-    protected final ParseTable parseTable;
+    protected ParseTable parseTable;
 
     public Document() {
         pdf = null;
@@ -28,6 +30,7 @@ public abstract class Document {
 
     public void setPdf(File pdf) {
         this.pdf = pdf;
+        readTextFromPDF();
     }
 
     /**
@@ -50,10 +53,10 @@ public abstract class Document {
     }
 
     /**
-     * Manually add
-     * @param heading
-     * @param text
-     * @return
+     * Manually add a section to the parse table
+     * @param heading section heading text
+     * @param text section body text
+     * @return body of added section
      */
     public String addSection(String heading, String text) {
         return parseTable.addSection(heading, text);
@@ -102,6 +105,10 @@ public abstract class Document {
         return parseTable.getAllKeywords();
     }
 
-    protected abstract void readTextFromPDF();
+    protected void readTextFromPDF() {
+        PDFConverter_PDF_To_STRING converter = new PDFConverter_PDF_To_STRING();
+        converter.convertPDF(pdf);
+        text = converter.getPDFTextList().get(0);
+    }
     protected abstract void fillInParseTable();
 }

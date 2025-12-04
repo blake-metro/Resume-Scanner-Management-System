@@ -1,6 +1,9 @@
 package groupsix.resume.model;
 
+import groupsix.resume.parsing.Parser;
+
 import java.io.File;
+import java.util.ArrayList;
 
 public class Resume extends Document{
     public Resume() {}
@@ -15,14 +18,10 @@ public class Resume extends Document{
         this.text = text;
         fillInParseTable();
     }
-    @Override
-    protected void readTextFromPDF() {
-        //todo: add code
-    }
 
     @Override
     protected void fillInParseTable() {
-        //todo: add code
+        parseTable = Parser.parseResume(text);
     }
 
     public static ParseTable getExampleParseTable() {
