@@ -21,4 +21,8 @@ public class Headings {
     public static String[] getResumeHeadings() {
         return Arrays.copyOf(defaultResumeHeadings, defaultResumeHeadings.length);
     }
+
+    public static String[] getJobDescriptionHeadings() {
+        return Arrays.copyOf(defaultJobDescriptionHeadings, defaultJobDescriptionHeadings.length);
+    }
 }
