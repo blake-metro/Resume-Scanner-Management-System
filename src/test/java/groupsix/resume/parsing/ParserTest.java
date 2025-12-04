@@ -113,60 +113,59 @@ class ParserTest {
     void parseJobDescription() {
         String fullText = """
                 Entry-Level Software Engineer
-                        Location: St. Paul, MN (Hybrid: 3 days on-site, 2 days remote)
-                        Company: NorthStar Tech Solutions
-                        Employment Type: Full-Time
-                        About Us
-                        NorthStar Tech Solutions is a growing Midwest-based software company specializing in cloud-based logistics and data analytics tools for manufacturing and transportation clients. We value innovation, collaboration, and curiosity—and we’re looking for a motivated software engineer to join our team!
-                        Position Summary
-                        As an Entry-Level Software Engineer, you’ll work closely with a team of experienced developers to design, build, and maintain web applications that help clients streamline operations. This is an excellent opportunity for recent graduates or early-career professionals to gain hands-on experience in a supportive environment.
-                        Key Responsibilities
-                        * Develop and maintain web applications using JavaScript, React, and Node.js
-                
-                        * Collaborate with senior engineers on API design and integration
-                
-                        * Participate in code reviews, testing, and debugging
-                
-                        * Write clear, maintainable, and efficient code
-                
-                        * Work with SQL and NoSQL databases to store and retrieve application data
-                
-                        * Contribute to Agile development sprints and daily stand-ups
-                
-                        Qualifications
-                           * Bachelor’s degree in Computer Science, Software Engineering, or related field (or equivalent experience)
-                
-                           * Solid understanding of object-oriented programming and data structures
-                
-                           * Familiarity with at least one modern web framework (React, Angular, or Vue)
-                
-                           * Basic knowledge of REST APIs and version control systems (Git)
-                
-                           * Strong problem-solving and communication skills
-                
-                           * Eagerness to learn and grow in a collaborative team environment
-                
-                        Preferred (Not Required)
-                              * Experience with Python, Java, or C#
-                
-                              * Exposure to AWS, Docker, or CI/CD pipelines
-                
-                              * Internship or project experience in a team-based software development setting
-                
-                        What We Offer
-                                 * Competitive starting salary ($65,000–$78,000 DOE)
-                
-                                 * Health, dental, and vision insurance
-                
-                                 * 401(k) with company match
-                
-                                 * Paid time off and flexible work schedule
-                
-                                 * Career growth opportunities and mentorship
-                
-                        How to Apply
-                        Submit your résumé, a brief cover letter, and a link to your GitHub or portfolio at careers@northstartechmn.com with the subject line: “Entry-Level Software Engineer – St. Paul.”
-        """;
+                Location: St. Paul, MN (Hybrid: 3 days on-site, 2 days remote)
+                Company: NorthStar Tech Solutions
+                Employment Type: Full-Time
+                About Us
+                NorthStar Tech Solutions is a growing Midwest-based software company specializing in cloud-based logistics and data analytics tools for manufacturing and transportation clients. We value innovation, collaboration, and curiosity—and we’re looking for a motivated software engineer to join our team!
+                Position Summary
+                As an Entry-Level Software Engineer, you’ll work closely with a team of experienced developers to design, build, and maintain web applications that help clients streamline operations. This is an excellent opportunity for recent graduates or early-career professionals to gain hands-on experience in a supportive environment.
+                Key Responsibilities
+                * Develop and maintain web applications using JavaScript, React, and Node.js
+        
+                * Collaborate with senior engineers on API design and integration
+        
+                * Participate in code reviews, testing, and debugging
+        
+                * Write clear, maintainable, and efficient code
+        
+                * Work with SQL and NoSQL databases to store and retrieve application data
+        
+                * Contribute to Agile development sprints and daily stand-ups
+        
+                Qualifications
+                   * Bachelor’s degree in Computer Science, Software Engineering, or related field (or equivalent experience)
+        
+                   * Solid understanding of object-oriented programming and data structures
+        
+                   * Familiarity with at least one modern web framework (React, Angular, or Vue)
+        
+                   * Basic knowledge of REST APIs and version control systems (Git)
+        
+                   * Strong problem-solving and communication skills
+        
+                   * Eagerness to learn and grow in a collaborative team environment
+        
+                Preferred (Not Required)
+                      * Experience with Python, Java, or C#
+        
+                      * Exposure to AWS, Docker, or CI/CD pipelines
+        
+                      * Internship or project experience in a team-based software development setting
+        
+                What We Offer
+                         * Competitive starting salary ($65,000–$78,000 DOE)
+        
+                         * Health, dental, and vision insurance
+        
+                         * 401(k) with company match
+        
+                         * Paid time off and flexible work schedule
+        
+                         * Career growth opportunities and mentorship
+        
+                How to Apply
+                Submit your résumé, a brief cover letter, and a link to your GitHub or portfolio at careers@northstartechmn.com with the subject line: “Entry-Level Software Engineer – St. Paul.”""";
 
         ParseTable parseTable = Parser.parseJobDescription(fullText);
         System.out.println("Job description parsed");
