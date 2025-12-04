@@ -18,17 +18,18 @@ Class dedicated to taking in a PDF and creating a String list to be used elsewhe
 
 
 
-public class PDFConverter_PDF_To_TXT {
+public class PDFConverter_PDF_To_STRING {
     private final ArrayList<String> pdfTextList;
 
 
-    public PDFConverter_PDF_To_TXT(){
-        pdfTextList = new ArrayList<>(); //Don't
-//        System.out.println("PDFConverter_PDF_To_TXT"); //Testing
+    public PDFConverter_PDF_To_STRING(){
+        pdfTextList = new ArrayList<>();
+//        System.out.println("PDFConverter_PDF_To_STRING"); //Testing
     }
 
 
-    public void convertPDF(){ //will convert all files that are in the src/ResumeStorage_PDFs directory
+    //Converts PDFs from a directory
+    public void convertPDF(){ //Makes use of directory, will convert all files that are in the src/ResumeStorage_PDFs directory
         try{
 //            System.out.println("Inside convertPDF"); //Testing
             //File.separator makes it so it can work on any OS, path is: src/main/ResumeStorage_PDFs
@@ -68,6 +69,40 @@ public class PDFConverter_PDF_To_TXT {
             System.err.println("Unsupported file format: " + e.getMessage());
         }
     }
+
+    //Converts PDF files passed to this method
+    public void convertPDF(File givenFile){
+        try{
+//            System.out.println("Inside convertPDF"); //Testing
+
+            PDDocument PDFFile = null; //Instantiate for later
+            String PDFText = null; //Instantiate for later
+            PDFTextStripper pdfStripper = new PDFTextStripper(); //Used to parse the pdf and convert contents to text/string
+
+            if (givenFile.isFile()) {
+//                        System.out.println("Accessing file: " + pdfFile.getName()); //Testing
+                if (givenFile.getName().endsWith(".pdf")) { //Must be a PDF, Portable Document Format
+                    PDFFile = PDDocument.load(givenFile);
+                    PDFText = pdfStripper.getText(PDFFile);
+                    pdfTextList.add(PDFText);
+                    PDFFile.close();
+                } else {
+                    throw new ResumeProcessingException("Unsupported file format: " + givenFile.getName());
+                }
+            }
+
+
+
+
+        } catch (IOException e){
+            e.printStackTrace();
+            System.err.println("IO error: " + e.getMessage());
+        } catch (ResumeProcessingException e){
+            e.printStackTrace();
+            System.err.println("Unsupported file format: " + e.getMessage());
+        }
+    }
+
 
     public ArrayList<String> getPDFTextList() {
         return pdfTextList;
