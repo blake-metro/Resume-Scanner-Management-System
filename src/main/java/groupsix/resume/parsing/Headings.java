@@ -5,12 +5,14 @@ import java.util.Arrays;
 public class Headings {
     private Headings(){}
 
-    private static String[] defaultLIst = {
-            "contact", "introduction", "objective", "education",
-            "experience", "skill", "awards", "projects", "volunteer",
-            "job", "work"};
+    // list is capitalized since headings are usually capitalized
+    // if a word appears outside a heading, it will be lowercase and should not be detected as a heading
+    private static final String[] defaultResumeHeadings = {
+            "Contact", "Introduction", "Objective", "Education",
+            "Experience", "Work Experience", "Qualifications", "Skills",
+            "Technical Skills", "Awards", "Projects", "Volunteering"};
 
-    public static String[] getWordList() {
-        return Arrays.copyOf(defaultLIst, defaultLIst.length);
+    public static String[] getResumeHeadings() {
+        return Arrays.copyOf(defaultResumeHeadings, defaultResumeHeadings.length);
     }
 }
