@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ResumeParser {
-    private ResumeParser(){}
+public class Parser {
+    private Parser(){}
 
     public static ParseTable parseText(String text){
         List<String> lines = List.of(text.split("\n"));

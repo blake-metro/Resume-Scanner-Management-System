@@ -1,7 +1,6 @@
 package groupsix.resume.parsing;
 
 import groupsix.resume.model.ParseTable;
-import groupsix.resume.model.Resume;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -102,7 +101,7 @@ class ResumeParserTest {
                 
                 (Mock resume created by ChatGPT)""";
 
-        ParseTable parseTable = ResumeParser.parseText(fullText);
+        ParseTable parseTable = Parser.parseText(fullText);
         System.out.println("Table created");
         assertTrue(true);
     }
