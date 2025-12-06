@@ -22,9 +22,9 @@ public class RSMSInteractor {
         File file = fileChooser.showOpenDialog(window);
         if (file != null) {
             if(target.equalsIgnoreCase("resume")) {
-                viewModel.setResume(file);
+                viewModel.getResume().setPdf(file);
             } else {
-                viewModel.setJobDescr(file);
+                viewModel.getJobDescription().setPdf(file);
             }
             openFile(file);
         }
