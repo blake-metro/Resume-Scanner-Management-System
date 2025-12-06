@@ -1,5 +1,7 @@
 package groupsix.resume.UI;
 
+import groupsix.resume.model.JobDescription;
+import groupsix.resume.model.Resume;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
@@ -22,9 +24,9 @@ public class RSMSInteractor {
         File file = fileChooser.showOpenDialog(window);
         if (file != null) {
             if(target.equalsIgnoreCase("resume")) {
-                viewModel.getResume().setPdf(file);
+                viewModel.setResume(new Resume(file));
             } else {
-                viewModel.getJobDescription().setPdf(file);
+                viewModel.setJobDescription(new JobDescription(file));
             }
             openFile(file);
         }

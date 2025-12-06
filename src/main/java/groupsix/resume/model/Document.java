@@ -1,10 +1,9 @@
 package groupsix.resume.model;
 
 import groupsix.resume.PDFConverter.PDFConverter_PDF_To_STRING;
+import javafx.collections.ObservableMap;
 
 import java.io.File;
-import java.util.Collection;
-import java.util.Map;
 
 /**
  * Superclass for <code>Resume</code> and <code>JobDescription</code> classes.
@@ -71,21 +70,11 @@ public abstract class Document {
     }
 
     /**
-     * Returns a collection of pairs of section headings and section text from the parse table.
-     * This collection can be turned into an ArrayList, or ObservableList for displaying via JavaFX
-     * TableView.
-     * @return collection of all entries in parse table
-     */
-    public Collection<Map.Entry<String, String>> getAllEntries() {
-        return parseTable.getAllSections();
-    }
-
-    /**
      * Returns all section headings and section text paired together in a Map using the headings
      * as keys and the text as values.
      * @return map of section headings and text
      */
-    public Map<String, String> getAllEntriesAsMap() {
+    public ObservableMap<String, String> getAllEntriesAsMap() {
         return parseTable.getAllSectionsAsMap();
     }
 
@@ -101,8 +90,8 @@ public abstract class Document {
         return parseTable.editKeyword(word, weight);
     }
 
-    public Collection<String> getAllKeywords() {
-        return parseTable.getAllKeywords();
+    public ObservableMap<String, Double> getAllKeywordsAsMap() {
+        return parseTable.getAllKeywordsAsMap();
     }
 
     protected void readTextFromPDF() {
@@ -110,5 +99,6 @@ public abstract class Document {
         converter.convertPDF(pdf);
         text = converter.getPDFTextList().get(0);
     }
+
     protected abstract void fillInParseTable();
 }

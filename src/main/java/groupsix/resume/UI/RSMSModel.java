@@ -10,8 +10,8 @@ public class RSMSModel {
     private double score;
 
     public RSMSModel(){
-        resume = new Resume();
-        jobDescription = new JobDescription();
+        resume = null;
+        jobDescription = null;
         score = 0;
     }
 
