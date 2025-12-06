@@ -4,8 +4,9 @@ module groupsix.resume {
     requires java.desktop;
     requires java.logging;
     requires org.apache.pdfbox;
+    requires groupsix.resume;
 
-    
+
     exports groupsix.resume.PDFConverter;
     opens groupsix.resume.PDFConverter to javafx.fxml;
     exports groupsix.resume.UI;

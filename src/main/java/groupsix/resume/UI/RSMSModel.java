@@ -1,24 +1,28 @@
 package groupsix.resume.UI;
 
-import java.io.File;
+import groupsix.resume.model.JobDescription;
+import groupsix.resume.model.Resume;
+
 
 public class RSMSModel {
-    private File resume;
-    private File jobDescr;
+    private Resume resume;
+    private JobDescription jobDescription;
     public ParseModel resParseModel = new ParseModel();
     public ParseModel jobDescrParseModel = new ParseModel();
 
-    public File getResume() {
+    public Resume getResume() {
         return resume;
     }
 
-    public void setResume(File file) {
-        resume = file;
+    public void setResume(Resume resume) {
+        this.resume = resume;
     }
 
-    public File getJobDescr() { return jobDescr;}
+    public JobDescription getJobDescription() {
+        return jobDescription;
+    }
 
-    public void setJobDescr(File file) {
-        jobDescr = file;
+    public void setJobDescription(JobDescription jobDescription) {
+        this.jobDescription = jobDescription;
     }
 }
