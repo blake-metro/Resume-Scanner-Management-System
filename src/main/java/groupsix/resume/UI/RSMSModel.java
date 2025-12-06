@@ -7,8 +7,13 @@ import groupsix.resume.model.Resume;
 public class RSMSModel {
     private Resume resume;
     private JobDescription jobDescription;
-    public ParseModel resParseModel = new ParseModel();
-    public ParseModel jobDescrParseModel = new ParseModel();
+    private double score;
+
+    public RSMSModel(){
+        resume = new Resume();
+        jobDescription = new JobDescription();
+        score = 0;
+    }
 
     public Resume getResume() {
         return resume;
