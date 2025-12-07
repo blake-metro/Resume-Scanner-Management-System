@@ -3,7 +3,6 @@ package groupsix.resume.UI;
 import groupsix.resume.model.JobDescription;
 import groupsix.resume.model.Resume;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -12,9 +11,9 @@ import java.util.Map;
 
 public class RSMSModel {
     private Resume resume;
-    private final ObservableList<ParseRow> resumeTable;
+    private final ObservableList<ParseTableRow> resumeTable;
     private JobDescription jobDescription;
-    private final ObservableList<ParseRow>  jobDescriptionTable;
+    private final ObservableList<ParseTableRow>  jobDescriptionTable;
     private final SimpleDoubleProperty score;
 
     public RSMSModel(){
@@ -33,7 +32,7 @@ public class RSMSModel {
         this.resume = resume;
         resumeTable.clear();
         for(Map.Entry<String, String> row: resume.getAllEntries()) {
-            resumeTable.add(new ParseRow(row.getKey(), row.getValue()));
+            resumeTable.add(new ParseTableRow(row.getKey(), row.getValue()));
         }
     }
 
@@ -45,12 +44,12 @@ public class RSMSModel {
         this.jobDescription = jobDescription;
         jobDescriptionTable.clear();
         for(Map.Entry<String, String> row: jobDescription.getAllEntries()) {
-            jobDescriptionTable.add(new ParseRow(row.getKey(), row.getValue()));
+            jobDescriptionTable.add(new ParseTableRow(row.getKey(), row.getValue()));
         }
     }
 
-    public ObservableList<ParseRow> getResumeTable() {return resumeTable;}
-    public ObservableList<ParseRow> getJobDescriptionTable() {return jobDescriptionTable;}
+    public ObservableList<ParseTableRow> getResumeTable() {return resumeTable;}
+    public ObservableList<ParseTableRow> getJobDescriptionTable() {return jobDescriptionTable;}
     public double getScore() {return score.get();}
     public void setScore(double score) {this.score.set(score);}
     public SimpleDoubleProperty getScoreProperty() {return score;}

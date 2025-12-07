@@ -6,15 +6,15 @@ import javafx.beans.property.StringProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParseRow {
+public class ParseTableRow {
     private final StringProperty heading = new SimpleStringProperty("");
     private final StringProperty body = new SimpleStringProperty("");
 
-    public ParseRow() {
+    public ParseTableRow() {
 
     }
 
-    public ParseRow(String title, String data) {
+    public ParseTableRow(String title, String data) {
         this.heading.set(title);
         this.body.set(data);
     }
@@ -34,10 +34,10 @@ public class ParseRow {
         return body;
     }
 
-    public static List<ParseRow> generateResList() {
-        List<ParseRow> results = new ArrayList<>();
-        results.add(new ParseRow("Name", "Ivana B. Codin"));
-        results.add(new ParseRow("Education", """
+    public static List<ParseTableRow> generateResList() {
+        List<ParseTableRow> results = new ArrayList<>();
+        results.add(new ParseTableRow("Name", "Ivana B. Codin"));
+        results.add(new ParseTableRow("Education", """
                     Metropolitan State University — St. Paul, MN
                     Bachelor of Science in Computer Science
                     Graduated: May 2025
@@ -46,7 +46,7 @@ public class ParseRow {
                     * Relevant Coursework: Data Structures & Algorithms, Software Engineering, Database Systems, Operating Systems, Web Application Development, Artificial Intelligence
                     
                     * Capstone Project: Campus Connect — a full-stack web app that helps students find study groups and campus events (React, Node.js, Express, MongoDB)"""));
-        results.add(new ParseRow("Experience", """
+        results.add(new ParseTableRow("Experience", """
                     Software Development Intern — CodeForge Technologies, Minneapolis, MN
                     June 2024 – August 2024
                              * Assisted in developing internal tools for automating data entry using Python and SQL.
@@ -63,12 +63,12 @@ public class ParseRow {
         return results;
     }
 
-    public static List<ParseRow> generateJobDescrList() {
-        List<ParseRow> results = new ArrayList<>();
-        results.add(new ParseRow("Job Title", "Entry-Level Software Engineer"));
-        results.add(new ParseRow("Company", "NorthStar Tech Solutions"));
-        results.add(new ParseRow("Location", "St. Paul, MN"));
-        results.add(new ParseRow("Responsibilities", """
+    public static List<ParseTableRow> generateJobDescrList() {
+        List<ParseTableRow> results = new ArrayList<>();
+        results.add(new ParseTableRow("Job Title", "Entry-Level Software Engineer"));
+        results.add(new ParseTableRow("Company", "NorthStar Tech Solutions"));
+        results.add(new ParseTableRow("Location", "St. Paul, MN"));
+        results.add(new ParseTableRow("Responsibilities", """
                 * Develop and maintain web applications using JavaScript, React, and Node.js
                 
                 * Collaborate with senior engineers on API design and integration
@@ -80,7 +80,7 @@ public class ParseRow {
                 * Work with SQL and NoSQL databases to store and retrieve application data
                 
                 * Contribute to Agile development sprints and daily stand-ups"""));
-        results.add(new ParseRow("Qualifications", """
+        results.add(new ParseTableRow("Qualifications", """
                 * Bachelor’s degree in Computer Science, Software Engineering, or related field (or equivalent experience)
                 
                 * Solid understanding of object-oriented programming and data structures

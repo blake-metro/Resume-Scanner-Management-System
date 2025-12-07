@@ -10,24 +10,24 @@ import javafx.util.Builder;
 public class JobDescViewBuilder implements Builder<Region> {
 
     private final RSMSModel model;
-    private final ObservableList<ParseRow> jobDescrTableItems;
+    private final ObservableList<ParseTableRow> jobDescrTableItems;
 
     public JobDescViewBuilder(RSMSModel model) {
         this.model = model;
         jobDescrTableItems = FXCollections.observableArrayList();
-        jobDescrTableItems.setAll(ParseRow.generateJobDescrList());
+        jobDescrTableItems.setAll(ParseTableRow.generateJobDescrList());
     }
 
     @Override
     public Region build() {
-        TableView<ParseRow> results = new TableView<>();
+        TableView<ParseTableRow> results = new TableView<>();
 
-        TableColumn<ParseRow, String> titleCol = new TableColumn<>("Heading");
+        TableColumn<ParseTableRow, String> titleCol = new TableColumn<>("Heading");
         titleCol.setCellValueFactory(
                 row -> row.getValue().headingProperty());
         results.getColumns().add(titleCol);
 
-        TableColumn<ParseRow, String> dataCol = new TableColumn<>("Body");
+        TableColumn<ParseTableRow, String> dataCol = new TableColumn<>("Body");
         dataCol.setCellValueFactory(
                 row -> row.getValue().bodyProperty());
         results.getColumns().add(dataCol);

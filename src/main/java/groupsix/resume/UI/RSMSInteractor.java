@@ -28,7 +28,7 @@ public class RSMSInteractor {
             } else {
                 viewModel.setJobDescription(new JobDescription(file));
             }
-            openFile(file);
+            //openFile(file);
         }
     }
 

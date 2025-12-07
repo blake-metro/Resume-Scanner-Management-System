@@ -11,9 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Window;
 import javafx.util.Builder;
 
-import java.io.File;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 public class AppViewBuilder implements Builder<Region> {
 
