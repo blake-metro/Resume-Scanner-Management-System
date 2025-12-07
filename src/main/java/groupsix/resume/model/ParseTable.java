@@ -1,5 +1,8 @@
 package groupsix.resume.model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableMap;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,12 +28,8 @@ public class ParseTable {
         return entries.replace(heading, text);
     }
 
-    public Collection<Map.Entry<String, String>> getAllSections() {
+    public Collection<Map.Entry<String, String>> getAllEntries() {
         return entries.entrySet();
-    }
-
-    public Map<String, String> getAllSectionsAsMap() {
-        return new HashMap<>(entries);
     }
 
     public String addKeyword(String word, double weight) {
@@ -45,8 +44,8 @@ public class ParseTable {
         return keywords.replace(word, weight) == null ? null : word;
     }
 
-    public Collection<String> getAllKeywords() {
-        return keywords.keySet();
+    public Collection<Map.Entry<String, Double>> getAllKeywords() {
+        return keywords.entrySet();
     }
 
     /**

@@ -8,14 +8,14 @@ public class Headings {
     // list is capitalized since headings are usually capitalized
     // if a word appears outside a heading, it will be lowercase and should not be detected as a heading
     private static final String[] defaultResumeHeadings = {
-            "Contact", "Name", "Phone", "Phone Number", "Email", "Introduction",
-            "Objective", "Education", "Experience", "Work Experience", "Qualifications",
-            "Skills", "Technical Skills", "Awards", "Projects", "Volunteering"};
+            "Contact", "Name", "Phone", "Email", "Introduction",
+            "Objective", "Education", "Experience", "Qualification",
+            "Skill", "Award", "Projects", "Volunteer"};
 
     private static final String[] defaultJobDescriptionHeadings = {
-            "Job Title", "Company", "Location", "Responsibilities", "Key Responsibilities",
-            "Tasks", "Qualifications", "Requirements", "Key Requirements", "Skills", "Preferred Skills",
-            "Preferred", "Pay", "Benefits", "Shift"};
+            "Job Title", "Company", "Location", "Responsibilities",
+            "Tasks", "Qualifications", "Requirements", "Skills",
+            "Pay", "Benefits", "Shift"};
 
 
     public static String[] getResumeHeadings() {
