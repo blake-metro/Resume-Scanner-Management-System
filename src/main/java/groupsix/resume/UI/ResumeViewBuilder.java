@@ -1,5 +1,7 @@
 package groupsix.resume.UI;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -7,30 +9,30 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.Region;
 import javafx.util.Builder;
 
+import java.util.Map;
+
 public class ResumeViewBuilder implements Builder<Region> {
 
     private final RSMSModel model;
-    private final ObservableList<ParseModel> resumeTableItems;
 
     public ResumeViewBuilder(RSMSModel model) {
-        resumeTableItems = FXCollections.observableArrayList();
-        resumeTableItems.setAll(ParseModel.generateResList());
         this.model = model;
     }
     @Override
     public Region build() {
-        // TODO:
-        TableView<ParseModel> results = new TableView<>();
+        TableView<Map.Entry<String, String>> results = new TableView<>();
 
-        TableColumn<ParseModel, String> titleCol = new TableColumn<>("Tag");
-        titleCol.setCellValueFactory(title -> title.getValue().titleProperty());
+        TableColumn<Map.Entry<String, String>, String> titleCol = new TableColumn<>("Heading");
+        titleCol.setCellValueFactory(   // 'getValue()' gets the Map entry pair, 'getKey()' gets the actual text
+                entry -> new SimpleStringProperty(entry.getValue().getKey()));
         results.getColumns().add(titleCol);
 
-        TableColumn<ParseModel, String> dataCol = new TableColumn<>("Data");
-        dataCol.setCellValueFactory(data -> data.getValue().dataProperty());
+        TableColumn<Map.Entry<String, String>, String> dataCol = new TableColumn<>("Body");
+        dataCol.setCellValueFactory(    // first 'getValue()' gets the Map entry pair, second gets the actual text
+                data -> new SimpleStringProperty(data.getValue().getValue()));
         results.getColumns().add(dataCol);
 
-        results.setItems(resumeTableItems);
+        results.setItems(FXCollections.observableArrayList(model.getResume().getAllEntries()));
 
         return results;
     }

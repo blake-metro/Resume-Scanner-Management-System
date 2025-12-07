@@ -4,6 +4,8 @@ import groupsix.resume.PDFConverter.PDFConverter_PDF_To_STRING;
 import javafx.collections.ObservableMap;
 
 import java.io.File;
+import java.util.Collection;
+import java.util.Map;
 
 /**
  * Superclass for <code>Resume</code> and <code>JobDescription</code> classes.
@@ -74,8 +76,8 @@ public abstract class Document {
      * as keys and the text as values.
      * @return map of section headings and text
      */
-    public ObservableMap<String, String> getAllEntriesAsMap() {
-        return parseTable.getAllSectionsAsMap();
+    public Collection<Map.Entry<String, String>> getAllEntries() {
+        return parseTable.getAllEntries();
     }
 
     public String addKeyword(String word, double weight) {
@@ -90,8 +92,8 @@ public abstract class Document {
         return parseTable.editKeyword(word, weight);
     }
 
-    public ObservableMap<String, Double> getAllKeywordsAsMap() {
-        return parseTable.getAllKeywordsAsMap();
+    public Collection<Map.Entry<String, Double>> getAllKeywords() {
+        return parseTable.getAllKeywords();
     }
 
     protected void readTextFromPDF() {

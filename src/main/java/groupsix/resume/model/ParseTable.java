@@ -8,12 +8,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParseTable {
-    private final ObservableMap<String, String> entries;
-    private final ObservableMap<String, Double> keywords;
+    private final Map<String, String> entries;
+    private final Map<String, Double> keywords;
 
     public ParseTable() {
-        entries = FXCollections.observableHashMap();
-        keywords = FXCollections.observableHashMap();
+        entries = new HashMap<>();
+        keywords = new HashMap<>();
     }
 
     public String addSection(String heading, String text) {
@@ -28,8 +28,8 @@ public class ParseTable {
         return entries.replace(heading, text);
     }
 
-    public ObservableMap<String, String> getAllSectionsAsMap() {
-        return entries;
+    public Collection<Map.Entry<String, String>> getAllEntries() {
+        return entries.entrySet();
     }
 
     public String addKeyword(String word, double weight) {
@@ -44,8 +44,8 @@ public class ParseTable {
         return keywords.replace(word, weight) == null ? null : word;
     }
 
-    public ObservableMap<String, Double> getAllKeywordsAsMap() {
-        return keywords;
+    public Collection<Map.Entry<String, Double>> getAllKeywords() {
+        return keywords.entrySet();
     }
 
     /**
