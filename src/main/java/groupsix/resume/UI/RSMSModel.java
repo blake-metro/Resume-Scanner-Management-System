@@ -2,17 +2,27 @@ package groupsix.resume.UI;
 
 import groupsix.resume.model.JobDescription;
 import groupsix.resume.model.Resume;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.util.Map;
 
 
 public class RSMSModel {
     private Resume resume;
+    private final ObservableList<ParseRow> resumeTable;
     private JobDescription jobDescription;
-    private double score;
+    private final ObservableList<ParseRow>  jobDescriptionTable;
+    private final SimpleDoubleProperty score;
 
     public RSMSModel(){
-        resume = new Resume();
-        jobDescription = new JobDescription();
-        score = 0;
+        resumeTable = FXCollections.observableArrayList();
+        jobDescriptionTable = FXCollections.observableArrayList();
+        setResume(new Resume());
+        setJobDescription(new JobDescription());
+        score = new SimpleDoubleProperty(0);
     }
 
     public Resume getResume() {
@@ -21,6 +31,10 @@ public class RSMSModel {
 
     public void setResume(Resume resume) {
         this.resume = resume;
+        resumeTable.clear();
+        for(Map.Entry<String, String> row: resume.getAllEntries()) {
+            resumeTable.add(new ParseRow(row.getKey(), row.getValue()));
+        }
     }
 
     public JobDescription getJobDescription() {
@@ -29,5 +43,15 @@ public class RSMSModel {
 
     public void setJobDescription(JobDescription jobDescription) {
         this.jobDescription = jobDescription;
+        jobDescriptionTable.clear();
+        for(Map.Entry<String, String> row: jobDescription.getAllEntries()) {
+            jobDescriptionTable.add(new ParseRow(row.getKey(), row.getValue()));
+        }
     }
+
+    public ObservableList<ParseRow> getResumeTable() {return resumeTable;}
+    public ObservableList<ParseRow> getJobDescriptionTable() {return jobDescriptionTable;}
+    public double getScore() {return score.get();}
+    public void setScore(double score) {this.score.set(score);}
+    public SimpleDoubleProperty getScoreProperty() {return score;}
 }

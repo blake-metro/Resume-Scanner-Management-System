@@ -20,19 +20,19 @@ public class ResumeViewBuilder implements Builder<Region> {
     }
     @Override
     public Region build() {
-        TableView<Map.Entry<String, String>> results = new TableView<>();
+        TableView<ParseRow> results = new TableView<>();
 
-        TableColumn<Map.Entry<String, String>, String> titleCol = new TableColumn<>("Heading");
-        titleCol.setCellValueFactory(   // 'getValue()' gets the Map entry pair, 'getKey()' gets the actual text
-                entry -> new SimpleStringProperty(entry.getValue().getKey()));
+        TableColumn<ParseRow, String> titleCol = new TableColumn<>("Heading");
+        titleCol.setCellValueFactory(
+                row -> row.getValue().headingProperty());
         results.getColumns().add(titleCol);
 
-        TableColumn<Map.Entry<String, String>, String> dataCol = new TableColumn<>("Body");
-        dataCol.setCellValueFactory(    // first 'getValue()' gets the Map entry pair, second gets the actual text
-                data -> new SimpleStringProperty(data.getValue().getValue()));
+        TableColumn<ParseRow, String> dataCol = new TableColumn<>("Body");
+        dataCol.setCellValueFactory(
+                row -> row.getValue().bodyProperty());
         results.getColumns().add(dataCol);
 
-        results.setItems(FXCollections.observableArrayList(model.getResume().getAllEntries()));
+        results.setItems(model.getResumeTable());
 
         return results;
     }

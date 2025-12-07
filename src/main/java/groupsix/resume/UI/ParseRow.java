@@ -6,38 +6,38 @@ import javafx.beans.property.StringProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParseModel {
-    private final StringProperty title = new SimpleStringProperty("");
-    private final StringProperty data = new SimpleStringProperty("");
+public class ParseRow {
+    private final StringProperty heading = new SimpleStringProperty("");
+    private final StringProperty body = new SimpleStringProperty("");
 
-    public ParseModel() {
+    public ParseRow() {
 
     }
 
-    public ParseModel(String title, String data) {
-        this.title.set(title);
-        this.data.set(data);
+    public ParseRow(String title, String data) {
+        this.heading.set(title);
+        this.body.set(data);
     }
-    public String getTitle() {
-        return title.get();
-    }
-
-    public StringProperty titleProperty() {
-        return title;
+    public String getHeading() {
+        return heading.get();
     }
 
-    public String getData() {
-        return data.get();
+    public StringProperty headingProperty() {
+        return heading;
     }
 
-    public StringProperty dataProperty() {
-        return data;
+    public String getBody() {
+        return body.get();
     }
 
-    public static List<ParseModel> generateResList() {
-        List<ParseModel> results = new ArrayList<>();
-        results.add(new ParseModel("Name", "Ivana B. Codin"));
-        results.add(new ParseModel("Education", """
+    public StringProperty bodyProperty() {
+        return body;
+    }
+
+    public static List<ParseRow> generateResList() {
+        List<ParseRow> results = new ArrayList<>();
+        results.add(new ParseRow("Name", "Ivana B. Codin"));
+        results.add(new ParseRow("Education", """
                     Metropolitan State University — St. Paul, MN
                     Bachelor of Science in Computer Science
                     Graduated: May 2025
@@ -46,7 +46,7 @@ public class ParseModel {
                     * Relevant Coursework: Data Structures & Algorithms, Software Engineering, Database Systems, Operating Systems, Web Application Development, Artificial Intelligence
                     
                     * Capstone Project: Campus Connect — a full-stack web app that helps students find study groups and campus events (React, Node.js, Express, MongoDB)"""));
-        results.add(new ParseModel("Experience", """
+        results.add(new ParseRow("Experience", """
                     Software Development Intern — CodeForge Technologies, Minneapolis, MN
                     June 2024 – August 2024
                              * Assisted in developing internal tools for automating data entry using Python and SQL.
@@ -63,12 +63,12 @@ public class ParseModel {
         return results;
     }
 
-    public static List<ParseModel> generateJobDescrList() {
-        List<ParseModel> results = new ArrayList<>();
-        results.add(new ParseModel("Job Title", "Entry-Level Software Engineer"));
-        results.add(new ParseModel("Company", "NorthStar Tech Solutions"));
-        results.add(new ParseModel("Location", "St. Paul, MN"));
-        results.add(new ParseModel("Responsibilities", """
+    public static List<ParseRow> generateJobDescrList() {
+        List<ParseRow> results = new ArrayList<>();
+        results.add(new ParseRow("Job Title", "Entry-Level Software Engineer"));
+        results.add(new ParseRow("Company", "NorthStar Tech Solutions"));
+        results.add(new ParseRow("Location", "St. Paul, MN"));
+        results.add(new ParseRow("Responsibilities", """
                 * Develop and maintain web applications using JavaScript, React, and Node.js
                 
                 * Collaborate with senior engineers on API design and integration
@@ -80,7 +80,7 @@ public class ParseModel {
                 * Work with SQL and NoSQL databases to store and retrieve application data
                 
                 * Contribute to Agile development sprints and daily stand-ups"""));
-        results.add(new ParseModel("Qualifications", """
+        results.add(new ParseRow("Qualifications", """
                 * Bachelor’s degree in Computer Science, Software Engineering, or related field (or equivalent experience)
                 
                 * Solid understanding of object-oriented programming and data structures
