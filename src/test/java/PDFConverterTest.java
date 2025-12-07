@@ -5,12 +5,12 @@ Class using JUnit to test PDF converter
 
  */
 
-import groupsix.resume.PDFConverter.PDFConverter_PDF_To_TXT;
+import groupsix.resume.PDFConverter.PDFConverter_PDF_To_STRING;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PDFConverterTest {
-    private final PDFConverter_PDF_To_TXT pdfToTxt = new PDFConverter_PDF_To_TXT();
+    private final PDFConverter_PDF_To_STRING pdfToTxt = new PDFConverter_PDF_To_STRING();
 
 //    @Test //Should only be used if not handling the exception internally, used test 1 to do that
 //    void shouldFailIfFileIsNotPDF() {
