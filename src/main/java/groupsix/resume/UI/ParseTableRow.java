@@ -6,6 +6,10 @@ import javafx.beans.property.StringProperty;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a single row of a ParseTable displayed in the region from
+ * TableViewBuilder
+ */
 public class ParseTableRow {
     private final StringProperty heading = new SimpleStringProperty("");
     private final StringProperty body = new SimpleStringProperty("");

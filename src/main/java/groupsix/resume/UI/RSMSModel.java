@@ -8,7 +8,10 @@ import javafx.collections.ObservableList;
 
 import java.util.Map;
 
-
+/**
+ * Connects the UI to the rest of the underlying model data.  UI elements should
+ * only access and modify data via this class or else they may not work properly.
+ */
 public class RSMSModel {
     private Resume resume;
     private final ObservableList<ParseTableRow> resumeTable;
