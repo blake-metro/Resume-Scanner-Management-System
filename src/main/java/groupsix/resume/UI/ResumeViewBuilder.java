@@ -16,14 +16,16 @@ public class ResumeViewBuilder implements Builder<Region> {
     public Region build() {
         TableView<ParseTableRow> results = new TableView<>();
 
-        TableColumn<ParseTableRow, String> titleCol = new TableColumn<>("Heading");
+        TableColumn<ParseTableRow, String> titleCol = new TableColumn<>("Section Title");
         titleCol.setCellValueFactory(
                 row -> row.getValue().headingProperty());
+        titleCol.prefWidthProperty().bind(results.widthProperty().multiply(0.2));
         results.getColumns().add(titleCol);
 
         TableColumn<ParseTableRow, String> dataCol = new TableColumn<>("Body");
         dataCol.setCellValueFactory(
                 row -> row.getValue().bodyProperty());
+        dataCol.prefWidthProperty().bind(results.widthProperty().multiply(0.8));
         results.getColumns().add(dataCol);
 
         results.setItems(model.getResumeTable());
