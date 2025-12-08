@@ -43,7 +43,7 @@ public class AppViewBuilder implements Builder<Region> {
         results = new BorderPane();
         resumeView = new TableViewBuilder(viewModel, TableViewBuilder.Type.RESUME).build();
         jobDescView = new TableViewBuilder(viewModel, TableViewBuilder.Type.JOB_DESCRIPTION).build();
-        scoreView = new ScoreViewBuilder().build();
+        scoreView = new ScoreViewBuilder(viewModel).build();
         resumeView.visibleProperty().bind(resumeViewVisible);
         jobDescView.visibleProperty().bind(jobDescViewVisible);
         scoreView.visibleProperty().bind(scoreViewVisible);
