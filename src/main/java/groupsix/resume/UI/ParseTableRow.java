@@ -18,9 +18,9 @@ public class ParseTableRow {
 
     }
 
-    public ParseTableRow(String title, String data) {
-        this.heading.set(title);
-        this.body.set(data);
+    public ParseTableRow(String heading, String body) {
+        this.heading.set(heading);
+        this.body.set(body);
     }
     public String getHeading() {
         return heading.get();
