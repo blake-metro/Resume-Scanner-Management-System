@@ -11,6 +11,6 @@ public class Scorer {
     private Scorer(){}
 
     public static double calculateScore(Resume resume, JobDescription jobDescription) {
-        return 0;
+        return -1;
     }
 }

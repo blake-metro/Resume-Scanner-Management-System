@@ -16,16 +16,17 @@ import java.util.function.Consumer;
 
 public class ScoreViewBuilder implements Builder<Region> {
 
-    //private final ResumeModel viewModel;
+    private final RSMSModel viewModel;
 
-    public ScoreViewBuilder() {
-        //this.viewModel = viewModel;
+    public ScoreViewBuilder(RSMSModel viewModel) {
+        this.viewModel = viewModel;
     }
 
     @Override
     public Region build() {
         // Displays score info
-        Label score = new Label("00");
+        Label score = new Label();
+        score.textProperty().bind(viewModel.scoreProperty());
         TableView scoreBreakdown = new TableView<String>();
         HBox scoreBox = new HBox(new Label("Score: "), score);
         scoreBox.setAlignment(Pos.CENTER);

@@ -2,7 +2,10 @@ package groupsix.resume.UI;
 
 import groupsix.resume.model.JobDescription;
 import groupsix.resume.model.Resume;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -17,14 +20,14 @@ public class RSMSModel {
     private final ObservableList<ParseTableRow> resumeTable;
     private JobDescription jobDescription;
     private final ObservableList<ParseTableRow>  jobDescriptionTable;
-    private final SimpleDoubleProperty score;
+    private final StringProperty score;
 
     public RSMSModel(){
         resumeTable = FXCollections.observableArrayList();
         jobDescriptionTable = FXCollections.observableArrayList();
         setResume(new Resume());
         setJobDescription(new JobDescription());
-        score = new SimpleDoubleProperty(0);
+        score = new SimpleStringProperty("0");
     }
 
     public Resume getResume() {
@@ -53,7 +56,7 @@ public class RSMSModel {
 
     public ObservableList<ParseTableRow> getResumeTable() {return resumeTable;}
     public ObservableList<ParseTableRow> getJobDescriptionTable() {return jobDescriptionTable;}
-    public double getScore() {return score.get();}
-    public void setScore(double score) {this.score.set(score);}
-    public SimpleDoubleProperty getScoreProperty() {return score;}
+    public double getScore() {return Double.parseDouble(score.get());}
+    public void setScore(double score) {this.score.set(String.valueOf(score));}
+    public StringProperty scoreProperty() {return score;}
 }

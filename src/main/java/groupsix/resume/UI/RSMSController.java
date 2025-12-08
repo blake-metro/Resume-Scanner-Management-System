@@ -1,5 +1,6 @@
 package groupsix.resume.UI;
 
+import groupsix.resume.parsing.Scorer;
 import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
@@ -21,6 +22,10 @@ public class RSMSController {
 
     private void chooseFile(Window window, String target) {
         interactor.chooseFile(window, target);
+    }
+
+    private void calculateScore(){
+        viewModel.setScore(Scorer.calculateScore(viewModel.getResume(), viewModel.getJobDescription()));
     }
 
     public Region getView() {
