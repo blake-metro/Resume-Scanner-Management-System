@@ -1,5 +1,7 @@
 package groupsix.resume.UI;
 
+import groupsix.resume.model.JobDescription;
+import groupsix.resume.model.Resume;
 import groupsix.resume.parsing.Scorer;
 import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
@@ -16,7 +18,7 @@ public class RSMSController {
 
     public RSMSController() {
         viewModel = new RSMSModel();
-        viewBuilder = new AppViewBuilder(viewModel, this::chooseFile);
+        viewBuilder = new AppViewBuilder(viewModel, this::chooseFile, this::calculateScore);
         interactor = new RSMSInteractor(viewModel);
     }
 
@@ -24,8 +26,8 @@ public class RSMSController {
         interactor.chooseFile(window, target);
     }
 
-    private void calculateScore(){
-        viewModel.setScore(Scorer.calculateScore(viewModel.getResume(), viewModel.getJobDescription()));
+    private void calculateScore(Resume resume, JobDescription jobDescription) {
+        viewModel.setScore(Scorer.calculateScore(resume, jobDescription));
     }
 
     public Region getView() {

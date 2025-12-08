@@ -27,7 +27,7 @@ public class RSMSModel {
         jobDescriptionTable = FXCollections.observableArrayList();
         setResume(new Resume());
         setJobDescription(new JobDescription());
-        score = new SimpleStringProperty("0");
+        score = new SimpleStringProperty("0.0");
     }
 
     public Resume getResume() {

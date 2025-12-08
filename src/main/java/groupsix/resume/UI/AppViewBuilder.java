@@ -1,5 +1,7 @@
 package groupsix.resume.UI;
 
+import groupsix.resume.model.JobDescription;
+import groupsix.resume.model.Resume;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Insets;
@@ -17,6 +19,7 @@ public class AppViewBuilder implements Builder<Region> {
 
     private final RSMSModel viewModel;
     private final BiConsumer<Window, String> chooseFile;
+    private final BiConsumer<Resume, JobDescription> calculateScore;
 
     private BorderPane results;
     private Region scoreView;
@@ -26,9 +29,10 @@ public class AppViewBuilder implements Builder<Region> {
     private BooleanProperty resumeViewVisible = new SimpleBooleanProperty(false);
     private BooleanProperty jobDescViewVisible = new SimpleBooleanProperty(false);
 
-    public AppViewBuilder(RSMSModel viewModel, BiConsumer<Window, String> chooseFile) {
+    public AppViewBuilder(RSMSModel viewModel, BiConsumer<Window, String> chooseFile, BiConsumer<Resume, JobDescription> calculateScore) {
         this.viewModel = viewModel;
         this.chooseFile = chooseFile;
+        this.calculateScore = calculateScore;
     }
 
     @Override
@@ -68,7 +72,8 @@ public class AppViewBuilder implements Builder<Region> {
         // Control Buttons
         // TODO: add controls for each view. Set visibility based on current view
         // Score View
-        Button calculateScoreButton = new Button("Calculate Score");    // TODO: make this button do something
+        Button calculateScoreButton = new Button("Calculate Score");
+        calculateScoreButton.setOnAction(evt -> calculateScore.accept(viewModel.getResume(), viewModel.getJobDescription()));
         // Resume View
         Button uploadResumeFile = new Button("Upload Resume");
         uploadResumeFile.setOnAction(evt -> chooseFile.accept(uploadResumeFile.getScene().getWindow(), "resume"));
