@@ -18,13 +18,14 @@ public class AppViewBuilder implements Builder<Region> {
     private final RSMSModel viewModel;
     private final BiConsumer<Window, String> chooseFile;
 
-    BorderPane results;
-    Region scoreView;
-    Region resumeView;
-    Region jobDescView;
-    BooleanProperty scoreViewVisible = new SimpleBooleanProperty(true);
-    BooleanProperty resumeViewVisible = new SimpleBooleanProperty(false);
-    BooleanProperty jobDescViewVisible = new SimpleBooleanProperty(false);
+    private BorderPane results;
+    private Region scoreView;
+    private Region resumeView;
+    private Region jobDescView;
+    private BooleanProperty scoreViewVisible = new SimpleBooleanProperty(true);
+    private BooleanProperty resumeViewVisible = new SimpleBooleanProperty(false);
+    private BooleanProperty jobDescViewVisible = new SimpleBooleanProperty(false);
+
     public AppViewBuilder(RSMSModel viewModel, BiConsumer<Window, String> chooseFile) {
         this.viewModel = viewModel;
         this.chooseFile = chooseFile;
