@@ -18,16 +18,8 @@ public class RSMSController {
 
     public RSMSController() {
         viewModel = new RSMSModel();
-        viewBuilder = new AppViewBuilder(viewModel, this::chooseFile, this::calculateScore);
         interactor = new RSMSInteractor(viewModel);
-    }
-
-    private void chooseFile(Window window, String target) {
-        interactor.chooseFile(window, target);
-    }
-
-    private void calculateScore(Resume resume, JobDescription jobDescription) {
-        viewModel.setScore(Scorer.calculateScore(resume, jobDescription));
+        viewBuilder = new AppViewBuilder(viewModel, interactor::chooseFile, interactor::calculateScore);
     }
 
     public Region getView() {

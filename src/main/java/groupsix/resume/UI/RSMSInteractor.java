@@ -2,6 +2,7 @@ package groupsix.resume.UI;
 
 import groupsix.resume.model.JobDescription;
 import groupsix.resume.model.Resume;
+import groupsix.resume.parsing.Scorer;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
@@ -30,6 +31,10 @@ public class RSMSInteractor {
             }
             //openFile(file);
         }
+    }
+
+    public void calculateScore(Resume resume, JobDescription jobDescription) {
+        viewModel.setScore(Scorer.calculateScore(resume, jobDescription));
     }
 
     private void openFile(File file) {
