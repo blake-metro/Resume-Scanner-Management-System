@@ -5,7 +5,7 @@ module groupsix.resume {
     requires java.logging;
     requires org.apache.pdfbox;
 
-    
+
     exports groupsix.resume.PDFConverter;
     opens groupsix.resume.PDFConverter to javafx.fxml;
     exports groupsix.resume.UI;
