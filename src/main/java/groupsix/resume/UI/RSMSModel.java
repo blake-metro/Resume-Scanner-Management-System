@@ -57,6 +57,6 @@ public class RSMSModel {
     public ObservableList<ParseTableRow> getResumeTable() {return resumeTable;}
     public ObservableList<ParseTableRow> getJobDescriptionTable() {return jobDescriptionTable;}
     public double getScore() {return Double.parseDouble(score.get());}
-    public void setScore(double score) {this.score.set(String.valueOf(score));}
+    public void setScore(double score) {this.score.set(String.format("%.1f",score));}
     public StringProperty scoreProperty() {return score;}
 }
