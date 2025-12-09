@@ -37,13 +37,6 @@ public class AppViewBuilder implements Builder<Region> {
 
     @Override
     public Region build() {
-        /*
-        TODO: Need to add another button for uploading a job description/keywords.
-        TODO: Need bind label to display a score.
-        TODO: Need to implement jobDesc tableView
-        TODO: Need to implement score breakdown
-         */
-
         results = new BorderPane();
         resumeView = new TableViewBuilder(viewModel, TableViewBuilder.Type.RESUME).build();
         jobDescView = new TableViewBuilder(viewModel, TableViewBuilder.Type.JOB_DESCRIPTION).build();
@@ -69,8 +62,6 @@ public class AppViewBuilder implements Builder<Region> {
         jobDescrButton.disableProperty().bind(jobDescViewVisible);
         resumeButton.disableProperty().bind(resumeViewVisible);
 
-        // Control Buttons
-        // TODO: add controls for each view. Set visibility based on current view
         // Score View
         Button calculateScoreButton = new Button("Calculate Score");
         calculateScoreButton.setOnAction(evt -> calculateScore.accept(viewModel.getResume(), viewModel.getJobDescription()));
